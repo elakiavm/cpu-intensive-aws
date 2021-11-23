@@ -1,13 +1,13 @@
-from flask import Flask
+# from flask import Flask
 from multiprocessing import Pool
 from multiprocessing import cpu_count
 import signal
 
-app =  Flask(__name__)
+# app =  Flask(__name__)
 
 stop_loop = 0
 
-@app.route('/')
+# @app.route('/')
 
 def exit_chld(x, y):
 
@@ -25,6 +25,8 @@ def f(x):
 
 signal.signal(signal.SIGINT, exit_chld)
 
+
+
 if __name__ == '__main__':
 
     processes = cpu_count() 
@@ -35,4 +37,4 @@ if __name__ == '__main__':
     pool = Pool(processes)
     pool.map(f, range(processes))
 
-    app.run(debug=True,host='0.0.0.0')
+    # app.run(debug=True,host='0.0.0.0')
